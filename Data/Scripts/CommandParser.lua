@@ -11,7 +11,8 @@ local CommandParser = {
 		INVALID_SUB_COMMAND = "Invalid sub command.",
 		INVALID_PLAYER = "Invalid player.",
 		INVALID_PERMISSION = "Invalid permission.",
-		NO_PERMISSION = "You do not have permission."
+		NO_PERMISSION = "You do not have permission.",
+		INVALID_COMMAND_DATA = "Invalid command data."
 
 	}
 }
@@ -203,6 +204,34 @@ end
 
 CommandParser.AddCommand = function(key, command)
 	CommandParser.commands[key] = command
+end
+
+CommandParser.AddResource = function(player, commandData, amount)
+	local playerData = Storage.GetPlayerData(player)
+
+	player:AddResource(commandData.resourceKey, amount or 0)
+
+	if not playerData[commandData.storageKey] then
+		playerData[commandData.storageKey] = amount
+	else
+		playerData[commandData.storageKey] = playerData[commandData.storageKey] + amount
+	end
+
+	Storage.SetPlayerData(player, playerData)
+end
+
+CommandParser.RemoveResource = function(player, commandData, amount)
+	local playerData = Storage.GetPlayerData(player)
+
+	player:RemoveResource(commandData.resourceKey, amount or 0)
+
+	if not playerData[commandData.storageKey] then
+		playerData[commandData.storageKey] = amount
+	else
+		playerData[commandData.storageKey] = math.max(0, playerData[commandData.storageKey] - amount)
+	end
+
+	Storage.SetPlayerData(player, playerData)
 end
 
 CommandParser.init = function()

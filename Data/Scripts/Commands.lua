@@ -276,3 +276,55 @@ CommandParser.AddCommand("speed", function(sender, params, status)
 		status.senderMessage = CommandParser.error.NO_PERMISSION
 	end
 end)
+
+-- Command data for Coins resource
+CommandParser.AddCommandData("coins", {
+
+	name = "Coins",
+	resourceKey = "coins",
+	storageKey = "c"
+
+})
+
+-- /give resource player amount
+-- /give resource all amount
+CommandParser.AddCommand("give", {
+
+	resource = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+			local commandData = CommandParser.GetCommandData(params[2])
+
+			if commandData ~= nil then
+				local who = CommandParser.ParamIsValid(params[3])
+		
+				if who ~= nil then
+					if who == "all" then
+						for k, player in ipairs(Game.GetPlayers()) do
+							if player ~= sender then
+								CommandParser.AddResource(player, commandData, tonumber(params[4]))
+							end
+						end
+		
+						status.success = true
+						status.senderMessage = "All players given resource."
+					else
+						who = CommandParser.GetPlayer(params[3])
+		
+						if who ~= nil then
+							CommandParser.AddResource(who, commandData, tonumber(params[4]))
+							status.success = true
+							status.senderMessage = "Player given resource."
+						end
+					end
+				else
+					status.senderMessage = CommandParser.error.INVALID_PLAYER
+				end
+			else
+				status.senderMessage = CommandParser.error.INVALID_COMMAND_DATA
+			end
+		else
+			status.senderMessage = CommandParser.error.NO_PERMISSION
+		end
+	end
+
+})
