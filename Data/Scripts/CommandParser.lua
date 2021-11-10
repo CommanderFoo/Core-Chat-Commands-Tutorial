@@ -3,8 +3,17 @@ local CommandParser = {
 	permissions = require(script:GetCustomProperty("CommandPermissions")),
 	data = {},
 	commands = {},
-	storageKey = "cmdperm"
+	storageKey = "cmdperm",
 
+	error = {
+
+		INVALID = "Invalid command.",
+		INVALID_SUB_COMMAND = "Invalid sub command.",
+		INVALID_PLAYER = "Invalid player.",
+		INVALID_PERMISSION = "Invalid permission.",
+		NO_PERMISSION = "You do not have permission."
+
+	}
 }
 
 CommandParser.HasPermission = function(sender, permission)
@@ -12,16 +21,18 @@ CommandParser.HasPermission = function(sender, permission)
 		return false
 	end
 
-	if permission.names ~= nil then
-		for i, n in ipairs(permission.names) do
-			if sender.name == n then
-				return true
+	for k, p in pairs(CommandParser.permissions) do
+		if p.names ~= nil then
+			for i, n in ipairs(p.names) do
+				if n == sender.name then
+					return true
+				end
 			end
 		end
-	else
-		if sender:GetResource(CommandParser.storageKey) >= permission.id then
-			return true
-		end
+	end
+
+	if permission.id ~= nil and sender:GetResource(CommandParser.storageKey) >= permission.id then
+		return true
 	end
 
 	return false
@@ -91,7 +102,7 @@ CommandParser.ParamIsValid = function(param, lower)
 			if lower then
 				param = string.lower(param)
 			end
-			
+
 			return param
 		end
 	end
@@ -131,14 +142,14 @@ end
 CommandParser.ParseMessage = function(speaker, params)
 	local message = params.message
 	local prefix = CommandParser.GetPlayerPrefix(speaker)
-	
+
 	params.speakerName = prefix .. params.speakerName
 
 	if message:sub(1, 1) == "/" then
 		local status = {
 
 			success = false,
-			senderMessage = "Invalid command",
+			senderMessage = "",
 			receiverMessage = nil,
 			receiverPlayer = nil
 
@@ -157,10 +168,16 @@ CommandParser.ParseMessage = function(speaker, params)
 				end
 			end
 
-			theCommand(speaker, tokens, status)
+			if theCommand ~= nil and type(theCommand) == "function" then
+				theCommand(speaker, tokens, status)
+			else
+				status.senderMessage = CommandParser.error.INVALID_SUB_COMMAND
+			end
 		end
 
-		Chat.BroadcastMessage(status.senderMessage, { players = speaker })
+		if string.len(status.senderMessage) > 0 then
+			Chat.BroadcastMessage(status.senderMessage, { players = speaker })
+		end
 
 		if status.success and status.receiverMessage ~= nil and Object.IsValid(status.receiverPlayer) then
 			Chat.BroadcastMessage(status.receiverMessage, { players = status.receiverPlayer })

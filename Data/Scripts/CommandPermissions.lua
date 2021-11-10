@@ -1,6 +1,6 @@
 local Permissions = {
 
-	ROOT_ADMIN = {
+	CREATOR = {
 
 		names = { "CommanderFoo", "Bot1" },
 		name = "Creator"
