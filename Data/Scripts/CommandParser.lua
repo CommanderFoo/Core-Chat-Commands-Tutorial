@@ -3,7 +3,7 @@ local CommandParser = {
 	permissions = require(script:GetCustomProperty("CommandPermissions")),
 	data = {},
 	commands = {},
-	storageKey = "cmdperm",
+	storageKey = "cmdp",
 
 	error = {
 
@@ -32,7 +32,7 @@ CommandParser.HasPermission = function(sender, permission)
 		end
 	end
 
-	if permission.id ~= nil and sender:GetResource(CommandParser.storageKey) >= permission.id then
+	if permission.priority ~= nil and sender:GetResource(CommandParser.storageKey) >= permission.priority then
 		return true
 	end
 
@@ -58,12 +58,12 @@ end
 CommandParser.SetPermission = function(player, perm)
 	perm = CommandParser.GetPermission(perm)
 
-	if perm ~= nil and perm.id ~= nil then
+	if perm ~= nil and perm.priority ~= nil then
 		local data = Storage.GetPlayerData(player)
 
-		data[CommandParser.storageKey] = perm.id or 0
+		data[CommandParser.storageKey] = perm.priority or 0
 
-		player:SetResource(CommandParser.storageKey, perm.id or 0)
+		player:SetResource(CommandParser.storageKey, perm.priority or 0)
 		Storage.SetPlayerData(player, data)
 
 		return true
@@ -115,7 +115,7 @@ end
 CommandParser.GetPlayerPrefix = function(player)
 	local prefix = ""
 	local data = Storage.GetPlayerData(player)
-	local permID = data[CommandParser.storageKey] or 0
+	local permPriority = data[CommandParser.storageKey] or 0
 
 	for k, p in pairs(CommandParser.permissions) do
 		local hasPerm = false
@@ -130,7 +130,7 @@ CommandParser.GetPlayerPrefix = function(player)
 			end
 		end
 
-		if not hasPerm and p.id ~= nil and p.id == permID then
+		if not hasPerm and p.priority ~= nil and p.priority == permPriority then
 			prefix = "[" .. p.name .. "]"
 			hasPerm = true
 			break
@@ -238,8 +238,8 @@ CommandParser.init = function()
 	Game.playerJoinedEvent:Connect(function(player)
 		local data = Storage.GetPlayerData(player)
 
-		if data.perm ~= nil then
-			player:SetResource(CommandParser.storageKey, data.perm)
+		if data[CommandParser.storageKey] ~= nil then
+			player:SetResource(CommandParser.storageKey, data[CommandParser.storageKey])
 		end
 	end)
 end

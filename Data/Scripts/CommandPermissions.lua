@@ -9,19 +9,17 @@ local Permissions = {
 
 	ADMIN = {
 
-		id = 1,
+		priority = 50,
 		name = "Admin"
 
 	},
 
 	MODERATOR = {
 
-		id = 2,
+		priority = 30,
 		name = "Moderator"
 
-	},
-
-	NONE = {}
+	}
 
 }
 
