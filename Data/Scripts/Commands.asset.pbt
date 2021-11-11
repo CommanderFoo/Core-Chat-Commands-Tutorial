@@ -12,6 +12,9 @@ Assets {
       }
     }
   }
+  Marketplace {
+    Description: "Commands tutorial"
+  }
   SerializationVersion: 101
   DirectlyPublished: true
 }

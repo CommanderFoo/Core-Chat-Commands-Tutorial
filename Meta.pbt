@@ -1,5 +1,6 @@
-GameId: "A483CF264E97DC72688E5D9295179C7B"
-DisplayName: "Admin Commands Tutorial"
+GameId: "3F135A88484B13AAE49401BD8D8F9BAC"
+DisplayName: "Admin Commands - Crawler"
 GameSerializationVersion: 101
-Framework: "EmptyProject"
+Framework: "Dungeon Crawler"
+SourceGameId: "cb47fc70cf254d93bcbb71d82dd38509"
 StorageVersion: 2

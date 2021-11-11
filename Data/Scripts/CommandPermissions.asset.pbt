@@ -4,6 +4,9 @@ Assets {
   PlatformAssetType: 3
   TextAsset {
   }
+  Marketplace {
+    Description: "Commands tutorial"
+  }
   SerializationVersion: 101
   DirectlyPublished: true
 }
