@@ -266,4 +266,41 @@ end
 
 CommandParser.init()
 
+-- /promote player permission
+CommandParser.AddCommand("promote", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.CREATOR) then
+		local promotePlayer = CommandParser.GetPlayer(params[2])
+
+		if promotePlayer ~= nil then
+			if CommandParser.SetPermission(promotePlayer, params[3]) then
+				status.success = true
+				status.senderMessage = promotePlayer.name .. " was successfully promoted."
+			else
+				status.senderMessage = CommandParser.error.INVALID_PERMISSION
+			end
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
+-- /demote player
+CommandParser.AddCommand("demote", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.CREATOR) then
+		local demotePlayer = CommandParser.GetPlayer(params[2])
+
+		if demotePlayer ~= nil then
+			CommandParser.RemovePermission(demotePlayer)
+			status.success = true
+			status.senderMessage = demotePlayer.name .. " was successfully deomoted."
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
 return CommandParser

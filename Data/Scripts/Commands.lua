@@ -1,46 +1,9 @@
 local CommandParser = require(script:GetCustomProperty("CommandParser"))
 
--- /promote player permission
-CommandParser.AddCommand("promote", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
-		local promotePlayer = CommandParser.GetPlayer(params[2])
-
-		if promotePlayer ~= nil then
-			if CommandParser.SetPermission(promotePlayer, params[3]) then
-				status.success = true
-				status.senderMessage = promotePlayer.name .. " was successfully promoted."
-			else
-				status.senderMessage = CommandParser.error.INVALID_PERMISSION
-			end
-		else
-			status.senderMessage = CommandParser.error.INVALID_PLAYER
-		end
-	else
-		status.senderMessage = CommandParser.error.NO_PERMISSION
-	end
-end)
-
--- /demote player
-CommandParser.AddCommand("demote", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.ROOT_ADMIN) then
-		local demotePlayer = CommandParser.GetPlayer(params[2])
-
-		if demotePlayer ~= nil then
-			CommandParser.RemovePermission(demotePlayer)
-			status.success = true
-			status.senderMessage = demotePlayer.name .. " was successfully deomoted."
-		else
-			status.senderMessage = CommandParser.error.INVALID_PLAYER
-		end
-	else
-		status.senderMessage = CommandParser.error.NO_PERMISSION
-	end
-end)
-
 -- /tp toplayer
 -- /tp player toplayer
 CommandParser.AddCommand("tp", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
 		local playerA = CommandParser.GetPlayer(params[2])
 		local playerB = CommandParser.GetPlayer(params[3])
 
@@ -247,7 +210,7 @@ end)
 -- /kill all
 -- /kill player
 CommandParser.AddCommand("kill", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
 		local who = CommandParser.ParamIsValid(params[3])
 
 		if who ~= nil then
@@ -277,4 +240,27 @@ CommandParser.AddCommand("kill", function(sender, params, status)
 	end
 end)
 
+CommandParser.AddCommand("help", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
+		local msg = { "Commands:" }
+
+		for k, c in pairs(CommandParser.commands) do
+			if type(c) == "function" then
+				table.insert(msg, "/" .. k)
+			else
+				for sk, sc in pairs(c) do
+					--table.insert(msg, "/" .. k .. " " .. sk)
+				end
+			end
+		end
+
+		if #msg > 0 then
+			Chat.BroadcastMessage(table.concat(msg, "\n"), { players = speaker })
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
 -- Grant max rp
+
