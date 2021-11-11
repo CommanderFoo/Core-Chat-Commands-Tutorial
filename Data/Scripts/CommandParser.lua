@@ -12,7 +12,8 @@ local CommandParser = {
 		INVALID_PLAYER = "Invalid player.",
 		INVALID_PERMISSION = "Invalid permission.",
 		NO_PERMISSION = "You do not have permission.",
-		INVALID_COMMAND_DATA = "Invalid command data."
+		INVALID_COMMAND_DATA = "Invalid command data.",
+		INVALID_VALUE = "Invalid value."
 
 	}
 }
@@ -111,7 +112,6 @@ CommandParser.ParamIsValid = function(param, lower)
 	return nil
 end
 
-
 CommandParser.GetPlayerPrefix = function(player)
 	local prefix = ""
 	local data = Storage.GetPlayerData(player)
@@ -206,32 +206,52 @@ CommandParser.AddCommand = function(key, command)
 	CommandParser.commands[key] = command
 end
 
-CommandParser.AddResource = function(player, commandData, amount)
-	local playerData = Storage.GetPlayerData(player)
+CommandParser.AddResource = function(player, resourceKey, storageKey, amount)
+	player:AddResource(resourceKey, amount or 0)
 
-	player:AddResource(commandData.resourceKey, amount or 0)
+	if storageKey ~= nil then
+		local playerData = Storage.GetPlayerData(player)
 
-	if not playerData[commandData.storageKey] then
-		playerData[commandData.storageKey] = amount
-	else
-		playerData[commandData.storageKey] = playerData[commandData.storageKey] + amount
+		if not playerData[storageKey] then
+			playerData[storageKey] = amount
+		else
+			playerData[storageKey] = playerData[storageKey] + amount
+		end
+
+		Storage.SetPlayerData(player, playerData)
 	end
-
-	Storage.SetPlayerData(player, playerData)
 end
 
-CommandParser.RemoveResource = function(player, commandData, amount)
-	local playerData = Storage.GetPlayerData(player)
+CommandParser.SetResource = function(player, resourceKey, storageKey, amount)
+	player:SetResource(resourceKey, amount or 0)
 
-	player:RemoveResource(commandData.resourceKey, amount or 0)
+	if storageKey ~= nil then
+		local playerData = Storage.GetPlayerData(player)
 
-	if not playerData[commandData.storageKey] then
-		playerData[commandData.storageKey] = amount
-	else
-		playerData[commandData.storageKey] = math.max(0, playerData[commandData.storageKey] - amount)
+		if not playerData[storageKey] then
+			playerData[storageKey] = amount
+		else
+			playerData[storageKey] = amount
+		end
+
+		Storage.SetPlayerData(player, playerData)
 	end
+end
 
-	Storage.SetPlayerData(player, playerData)
+CommandParser.RemoveResource = function(player, resourceKey, storageKey, amount)
+	player:RemoveResource(resourceKey, amount or 0)
+
+	if storageKey ~= nil then
+		local playerData = Storage.GetPlayerData(player)
+		
+		if not playerData[storageKey] then
+			playerData[storageKey] = amount
+		else
+			playerData[storageKey] = playerData[storageKey] - amount
+		end
+
+		Storage.SetPlayerData(player, playerData)
+	end
 end
 
 CommandParser.init = function()

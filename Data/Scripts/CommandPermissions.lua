@@ -1,5 +1,7 @@
 local Permissions = {
 
+	-- Local preview / mp add Bot1
+	
 	CREATOR = {
 
 		names = { "CommanderFoo", "Bot1" },

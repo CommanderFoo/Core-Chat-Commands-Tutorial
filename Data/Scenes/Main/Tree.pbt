@@ -108,7 +108,7 @@ Objects {
 }
 Objects {
   Id: 17348215424221105125
-  Name: "Server"
+  Name: "Admin Commands"
   Transform {
     Location {
     }
