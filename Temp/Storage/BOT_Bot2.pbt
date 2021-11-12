@@ -1,6 +1,6 @@
 Entries {
   Key {
-    StringVar: "cmdperm"
+    StringVar: "cmdp"
   }
   SimpleValue {
     IntVar: 0
@@ -8,9 +8,9 @@ Entries {
 }
 Entries {
   Key {
-    StringVar: "cmdp"
+    StringVar: "cmdperm"
   }
   SimpleValue {
-    IntVar: 30
+    IntVar: 0
   }
 }

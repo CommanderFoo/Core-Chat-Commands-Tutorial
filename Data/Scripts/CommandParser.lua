@@ -114,26 +114,29 @@ end
 
 CommandParser.GetPlayerPrefix = function(player)
 	local prefix = ""
-	local data = Storage.GetPlayerData(player)
-	local permPriority = data[CommandParser.storageKey] or 0
 
-	for k, p in pairs(CommandParser.permissions) do
-		local hasPerm = false
+	if Environment.IsServer() then
+		local data = Storage.GetPlayerData(player)
+		local permPriority = data[CommandParser.storageKey] or 0
 
-		if p.names ~= nil then
-			for i, n in ipairs(p.names) do
-				if n == player.name then
-					hasPerm = true
-					prefix = "[" .. p.name .. "]"
-					break
+		for k, p in pairs(CommandParser.permissions) do
+			local hasPerm = false
+
+			if p.names ~= nil then
+				for i, n in ipairs(p.names) do
+					if n == player.name then
+						hasPerm = true
+						prefix = "[" .. p.name .. "]"
+						break
+					end
 				end
 			end
-		end
 
-		if not hasPerm and p.priority ~= nil and p.priority == permPriority then
-			prefix = "[" .. p.name .. "]"
-			hasPerm = true
-			break
+			if not hasPerm and p.priority ~= nil and p.priority == permPriority then
+				prefix = "[" .. p.name .. "]"
+				hasPerm = true
+				break
+			end
 		end
 	end
 
@@ -161,6 +164,8 @@ CommandParser.ParseMessage = function(speaker, params)
 		local theCommand = CommandParser.commands[command]
 
 		if theCommand ~= nil then
+			params.message = ""
+			
 			if type(theCommand) == "table" then
 				local subCommand = CommandParser.ParamIsValid(tokens[2])
 
@@ -175,16 +180,18 @@ CommandParser.ParseMessage = function(speaker, params)
 				status.senderMessage = CommandParser.error.INVALID_SUB_COMMAND
 			end
 		end
-
+			
 		if string.len(status.senderMessage) > 0 then
-			Chat.BroadcastMessage(status.senderMessage, { players = speaker })
+			if Environment.IsServer() then
+				Chat.BroadcastMessage(status.senderMessage, { players = speaker })
+			elseif Environment.IsClient() then
+				Chat.LocalMessage(status.senderMessage)
+			end
 		end
 
-		if status.success and status.receiverMessage ~= nil and Object.IsValid(status.receiverPlayer) then
+		if status.success and status.receiverMessage ~= nil and Object.IsValid(status.receiverPlayer) and Environment.IsServer() then
 			Chat.BroadcastMessage(status.receiverMessage, { players = status.receiverPlayer })
 		end
-
-		params.message = ""
 	end
 end
 
@@ -255,13 +262,15 @@ CommandParser.RemoveResource = function(player, resourceKey, storageKey, amount)
 end
 
 CommandParser.init = function()
-	Game.playerJoinedEvent:Connect(function(player)
-		local data = Storage.GetPlayerData(player)
+	if Environment.IsServer() then
+		Game.playerJoinedEvent:Connect(function(player)
+			local data = Storage.GetPlayerData(player)
 
-		if data[CommandParser.storageKey] ~= nil then
-			player:SetResource(CommandParser.storageKey, data[CommandParser.storageKey])
-		end
-	end)
+			if data[CommandParser.storageKey] ~= nil then
+				player:SetResource(CommandParser.storageKey, data[CommandParser.storageKey])
+			end
+		end)
+	end
 end
 
 CommandParser.init()

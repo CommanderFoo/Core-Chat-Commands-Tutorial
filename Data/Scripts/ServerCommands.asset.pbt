@@ -1,6 +1,6 @@
 Assets {
   Id: 5070355437644535601
-  Name: "Commands"
+  Name: "ServerCommands"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
