@@ -1,5 +1,5 @@
-GameId: "A483CF264E97DC72688E5D9295179C7B"
-DisplayName: "Admin Commands Tutorial"
+GameId: "3AFAAFF94D860B1258762FAB2EDD88CC"
+DisplayName: "Chat Commands Tutorial"
 GameSerializationVersion: 101
 Framework: "EmptyProject"
 StorageVersion: 2
