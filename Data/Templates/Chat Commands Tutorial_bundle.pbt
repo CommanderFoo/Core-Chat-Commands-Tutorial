@@ -1,12 +1,12 @@
 Assets {
-  Id: 10144930274966993862
-  Name: "Commands Tutorial"
+  Id: 14237971253290887057
+  Name: "Chat Commands Tutorial"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 11439778937692888676
+      RootId: 16770956965621346328
       Objects {
-        Id: 11439778937692888676
+        Id: 16770956965621346328
         Name: "TemplateBundleDummy"
         Transform {
           Location {
@@ -22,13 +22,10 @@ Assets {
         Folder {
           BundleDummy {
             ReferencedAssets {
-              Id: 1788586702711104432
-            }
-            ReferencedAssets {
               Id: 2115394716976713347
             }
             ReferencedAssets {
-              Id: 5070355437644535601
+              Id: 1788586702711104432
             }
           }
         }
@@ -40,11 +37,11 @@ Assets {
     }
   }
   Marketplace {
-    Id: "73ecc07e6f1c47c0ab6d4358b09e0bea"
+    Id: "25f4ec5a82dd4b299a0119b5e40cecdf"
     OwnerAccountId: "93d6eaf2514940a08c5481a4c03c1ee3"
     OwnerName: "CommanderFoo"
     Version: "1.0.0"
-    Description: "Commands tutorial"
+    Description: "Command Parser and Permissions for following along with the Chat Commands Turorial on Docs."
   }
   SerializationVersion: 101
 }

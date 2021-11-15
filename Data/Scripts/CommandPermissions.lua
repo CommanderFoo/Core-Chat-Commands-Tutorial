@@ -4,7 +4,7 @@ local Permissions = {
 	
 	CREATOR = {
 
-		names = { "CommanderFoo", "Bot1" },
+		names = { "CommanderFoo" },
 		name = "Creator"
 
 	},
@@ -24,5 +24,11 @@ local Permissions = {
 	}
 
 }
+
+-- Add Bot1 if the game is local for testing local
+-- multiplayer preview.
+if Environment.IsLocalGame() then
+	table.insert(Permissions.CREATOR.names, "Bot1")
+end
 
 return Permissions

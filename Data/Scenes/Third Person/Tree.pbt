@@ -49,8 +49,7 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 11198310355192063044
-  ChildIds: 15784844154778204042
+  ChildIds: 15733005341959775530
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -68,7 +67,7 @@ Objects {
   }
 }
 Objects {
-  Id: 15784844154778204042
+  Id: 15733005341959775530
   Name: "CrawlerCommandsServer"
   Transform {
     Location {
@@ -105,39 +104,6 @@ Objects {
   Script {
     ScriptAsset {
       Id: 1667165740665507508
-    }
-  }
-}
-Objects {
-  Id: 11198310355192063044
-  Name: "GeneralCommandsServer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 15724683130627435244
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 5070355437644535601
     }
   }
 }

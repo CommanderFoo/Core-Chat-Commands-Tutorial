@@ -13,7 +13,7 @@ Assets {
     }
   }
   Marketplace {
-    Description: "Commands tutorial"
+    Description: "Command Parser and Permissions for following along with the Chat Commands Turorial on Docs."
   }
   SerializationVersion: 101
   DirectlyPublished: true
