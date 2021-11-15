@@ -1,12 +1,12 @@
 Assets {
-  Id: 10144930274966993862
+  Id: 7620331729392075171
   Name: "Commands Tutorial"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 11439778937692888676
+      RootId: 7055854071600083313
       Objects {
-        Id: 11439778937692888676
+        Id: 7055854071600083313
         Name: "TemplateBundleDummy"
         Transform {
           Location {
@@ -22,13 +22,10 @@ Assets {
         Folder {
           BundleDummy {
             ReferencedAssets {
-              Id: 1788586702711104432
-            }
-            ReferencedAssets {
               Id: 2115394716976713347
             }
             ReferencedAssets {
-              Id: 5070355437644535601
+              Id: 1788586702711104432
             }
           }
         }
@@ -40,10 +37,10 @@ Assets {
     }
   }
   Marketplace {
-    Id: "73ecc07e6f1c47c0ab6d4358b09e0bea"
+    Id: "095872a63873451ea0d723521dccbf49"
     OwnerAccountId: "93d6eaf2514940a08c5481a4c03c1ee3"
     OwnerName: "CommanderFoo"
-    Description: "Commands tutorial"
+    Description: "Command Parser for the tutorial on docs."
   }
   SerializationVersion: 101
 }

@@ -172,24 +172,6 @@ CommandParser.AddCommand("voice", {
 
 })
 
--- /setteam player team
-CommandParser.AddCommand("setteam", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
-		local player = CommandParser.GetPlayer(params[2])
-
-		if player ~= nil then
-			player.team = tonumber(params[3]) or player.team
-
-			status.success = true
-			status.senderMessage = "Player team set."
-		else
-			status.senderMessage = CommandParser.error.INVALID_PLAYER
-		end
-	else
-		status.senderMessage = CommandParser.error.NO_PERMISSION
-	end
-end)
-
 -- /speed player walkspeed
 CommandParser.AddCommand("speed", function(sender, params, status)
 	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
@@ -211,7 +193,7 @@ end)
 -- /kill player
 CommandParser.AddCommand("kill", function(sender, params, status)
 	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
-		local who = CommandParser.ParamIsValid(params[3])
+		local who = CommandParser.ParamIsValid(params[2])
 
 		if who ~= nil then
 			if who == "all" then
@@ -224,7 +206,7 @@ CommandParser.AddCommand("kill", function(sender, params, status)
 				status.success = true
 				status.senderMessage = "All players killed."
 			else
-				who = CommandParser.GetPlayer(params[3])
+				who = CommandParser.GetPlayer(params[2])
 
 				if who ~= nil then
 					who:Die()
@@ -240,27 +222,175 @@ CommandParser.AddCommand("kill", function(sender, params, status)
 	end
 end)
 
-CommandParser.AddCommand("help", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
-		local msg = { "Commands:" }
+CommandParser.AddCommand("grantrp", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local who = CommandParser.ParamIsValid(params[2])
 
-		for k, c in pairs(CommandParser.commands) do
-			if type(c) == "function" then
-				table.insert(msg, "/" .. k)
+		if who ~= nil then
+			local amount = tonumber(params[3]) or 250
+
+			if who == "all" then
+				for k, player in ipairs(Game.GetPlayers()) do
+					player:GrantRewardPoints(amount, "Awarded Points")
+				end
+
+				status.success = true
+				status.senderMessage = "All players granted reward points."
 			else
-				for sk, sc in pairs(c) do
-					--table.insert(msg, "/" .. k .. " " .. sk)
+				who = CommandParser.GetPlayer(params[2])
+
+				if who ~= nil then
+					who:GrantRewardPoints(amount, "Awarded Points")
+					status.success = true
+					status.senderMessage = "Player granted reward points."
+					status.receiverMessage = "You have been granted " .. tostring(amount) .. " reward points." 
+					status.receiverPlayer = who
 				end
 			end
-		end
-
-		if #msg > 0 then
-			Chat.BroadcastMessage(table.concat(msg, "\n"), { players = speaker })
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
 		end
 	else
 		status.senderMessage = CommandParser.error.NO_PERMISSION
 	end
 end)
 
--- Grant max rp
--- reset storage
+CommandParser.AddCommand("invisible", {
+	
+	on = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+			sender.isVisible = false
+		end
+	end,
+
+	off = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+			sender.isVisible = true
+		end
+	end
+
+})
+
+CommandParser.AddCommand("resetstorage", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local who = CommandParser.ParamIsValid(params[2])
+
+		if who ~= nil then
+			if who == "all" then
+				for k, player in ipairs(Game.GetPlayers()) do
+					if player ~= sender then
+						Storage.SetPlayerData(player, {})
+					end
+				end
+
+				status.success = true
+				status.senderMessage = "All players reset."
+			else
+				who = CommandParser.GetPlayer(params[2])
+
+				if who ~= nil then
+					Storage.SetPlayerData(who, {})
+					status.success = true
+					status.senderMessage = "Player reset."
+					status.receiverMessage = "You have been reset." 
+					status.receiverPlayer = who
+				end
+			end
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
+CommandParser.AddCommandData("coins", {
+
+    name = "Coins",
+    resourceKey = "coins",
+    storageKey = "c"
+
+})
+
+CommandParser.AddCommandData("gems", {
+
+    name = "Gems",
+    resourceKey = "gems",
+    storageKey = "g"
+
+})
+
+CommandParser.AddCommand("give", {
+
+	resource = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
+			local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[3]))
+	
+			if who ~= nil then
+				local commandData = CommandParser.GetCommandData(params[4])
+
+				if commandData ~= nil then	
+					local playerData = Storage.GetPlayerData(who)
+					local amount = tonumber(params[5]) or 0
+
+					who:AddResource(commandData.resourceKey, amount)
+
+					if not playerData[commandData.storageKey] then
+						playerData[commandData.storageKey] = amount
+					else
+						playerData[commandData.storageKey] = playerData[commandData.storageKey] + amount
+					end
+
+					Storage.SetPlayerData(who, playerData)
+
+					status.success = true
+					status.senderMessage = "Resource successfully given."
+					status.receiverMessage = "You have been gifted " .. tostring(amount) .. " " .. commandData.name .. "."
+					status.receiverPlayer = who
+				else
+					status.senderMessage = "Command data \"" .. item .. "\" does not exist."
+				end	
+			else
+				status.senderMessage = CommandParser.error.INVALID_PLAYER
+			end
+		else
+			status.senderMessage = CommandParser.error.NO_PERMISSION
+		end
+	end
+
+})
+
+CommandParser.AddCommand("help", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
+		local msg = { "Commands:" }
+
+		for k, c in pairs(CommandParser.commands) do
+			table.insert(msg, "/" .. k)
+		end
+
+		if #msg > 0 then
+			Chat.BroadcastMessage(table.concat(msg, "\n"), { players = sender })
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
+
+-- /setteam player team
+-- CommandParser.AddCommand("setteam", function(sender, params, status)
+-- 	if CommandParser.HasPermission(sender, CommandParser.permissions.MODERATOR) then
+-- 		local player = CommandParser.GetPlayer(params[2])
+
+-- 		if player ~= nil then
+-- 			player.team = tonumber(params[3]) or player.team
+
+-- 			status.success = true
+-- 			status.senderMessage = "Player team set."
+-- 		else
+-- 			status.senderMessage = CommandParser.error.INVALID_PLAYER
+-- 		end
+-- 	else
+-- 		status.senderMessage = CommandParser.error.NO_PERMISSION
+-- 	end
+-- end)
