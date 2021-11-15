@@ -21,13 +21,6 @@ local COMPONENT_ROOT = script:GetCustomProperty("ComponentRoot"):WaitForObject()
 -- User exposed properties
 local SHOW_EQUIPMENT_NAME = COMPONENT_ROOT:GetCustomProperty("ShowEquipmentName")
 
--- string GetShortId(CoreObject)
--- Returns the id of the object without the human-readable name on the end for networking
--- Example: "842B77E668FD9258" instead of "842B77E668FD9258:Capture Point Assault"
-function GetShortId(object)
-	return string.sub(object.id, 1, string.find(object.id, ":") - 1)
-end
-
 -- nil OnPlayerDied(Player, Damage)
 -- Fires an event for the client to add a line to the kill feed
 function OnPlayerDied(player, damage)
@@ -35,12 +28,12 @@ function OnPlayerDied(player, damage)
 		local equipment = damage.sourceAbility:FindAncestorByType("Equipment")
 
 		if SHOW_EQUIPMENT_NAME and equipment then
-			Events.BroadcastToAllPlayers("PlayerKilled", damage.sourcePlayer, player, GetShortId(equipment))
+			Events.BroadcastToAllPlayers("KF", damage.sourcePlayer, player, equipment.id)
 		else
-			Events.BroadcastToAllPlayers("PlayerKilled", damage.sourcePlayer, player, GetShortId(damage.sourceAbility))
+			Events.BroadcastToAllPlayers("KF", damage.sourcePlayer, player, damage.sourceAbility.id)
 		end
 	else
-		Events.BroadcastToAllPlayers("PlayerKilled", damage.sourcePlayer, player, nil)
+		Events.BroadcastToAllPlayers("KF", damage.sourcePlayer, player, nil)
 	end
 end
 

@@ -100,18 +100,6 @@ function OnKill(killerPlayer, killedPlayer, sourceObjectId)
 	end
 end
 
--- nil OnLevelUp(Player, number)
--- Catches the event from the progression script and adds a line
-function OnLevelUp(player, level)
-	local lineColor = TEXT_COLOR
-
-	if player == LOCAL_PLAYER then
-		lineColor = SELF_TEXT_COLOR
-	end
-
-	AddLine(string.format("%s has leveled up to level %d", player.name, level), lineColor)
-end
-
 -- nil Tick(float)
 -- Update the line templates to match current data, and update fading
 function Tick(deltaTime)
@@ -137,8 +125,7 @@ for i = 1, NUM_LINES do
 	lineTemplates[i]:SetColor(Color.TRANSPARENT)
 end
 
-Events.Connect("PlayerKilled", OnKill)
-Events.Connect("LevelUp", OnLevelUp)
+Events.Connect("KF", OnKill)
 
 if SHOW_JOIN_AND_LEAVE then
 	Game.playerJoinedEvent:Connect(OnPlayerJoined)

@@ -1,5 +1,5 @@
 Assets {
-  Id: 15759193141744598731
+  Id: 17602874323132382533
   Name: "Kill Feed"
   PlatformAssetType: 5
   TemplateAsset {
@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 5628166357863187692
+        ParentId: 14256649674182269152
         ChildIds: 4282101098513356928
         ChildIds: 7991991925041459746
         UnregisteredParameters {
@@ -291,10 +291,10 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Control {
-          Width: 700
-          Height: 365
-          UIX: -35
-          UIY: 100
+          Width: 500
+          Height: 300
+          UIX: -25
+          UIY: 60
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -319,8 +319,8 @@ Assets {
       }
     }
     PrimaryAssetId {
-      AssetType: "TemplateAssetRef"
-      AssetId: "Kill_Feed"
+      AssetType: "None"
+      AssetId: "None"
     }
   }
   SerializationVersion: 101

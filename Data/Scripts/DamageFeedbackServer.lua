@@ -18,11 +18,9 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 -- nil OnPlayerDied(Player, Damage)
 -- Fires an event for the client to display fly up text when hit the enemy player
 function OnPlayerDamaged(player, damage)
-	local position = Vector3.ZERO
-	if Object.IsValid(damage.sourcePlayer) then
-		position = damage.sourcePlayer:GetWorldPosition()
-	end
-    Events.BroadcastToAllPlayers ("PlayerDamage", damage.amount, position, player, damage.sourcePlayer)
+    if damage.sourcePlayer then
+        Events.BroadcastToAllPlayers ("PlayerDamage_Internal", damage.amount, player, damage.sourcePlayer)
+    end
 end
 
 function OnPlayerJoined(player)

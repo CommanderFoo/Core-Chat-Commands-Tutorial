@@ -1,12 +1,12 @@
 Assets {
-  Id: 1518160165269425996
+  Id: 1683114021203363022
   Name: "Generic Sound Out Of Ammo"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 17487107411025673192
+      RootId: 14012503292482822231
       Objects {
-        Id: 17487107411025673192
+        Id: 14012503292482822231
         Name: "Generic Sound Out Of Ammo"
         Transform {
           Scale {
@@ -15,8 +15,40 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 4781671109827199097
-        ChildIds: 2151843676022773152
+        ParentId: 12436546004889713338
+        ChildIds: 17487107411025673192
+        UnregisteredParameters {
+        }
+        WantsNetworking: true
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Folder {
+          IsGroup: true
+        }
+      }
+      Objects {
+        Id: 17487107411025673192
+        Name: "Client Context"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 14012503292482822231
+        ChildIds: 14374793592845219494
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -33,8 +65,8 @@ Assets {
         }
       }
       Objects {
-        Id: 2151843676022773152
-        Name: "Meta Fantasy Debuff 01 SFX"
+        Id: 14374793592845219494
+        Name: "Dry Fire Click Generic Clicky 01 SFX"
         Transform {
           Location {
           }
@@ -47,6 +79,8 @@ Assets {
           }
         }
         ParentId: 17487107411025673192
+        UnregisteredParameters {
+        }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -58,25 +92,24 @@ Assets {
         }
         AudioInstance {
           AudioAsset {
-            Id: 6769684776685552986
+            Id: 3358730465653412221
           }
           AutoPlay: true
           Volume: 1
-          Falloff: -1
-          Radius: -1
-          EnableOcclusion: true
+          Falloff: 1200
+          Radius: 400
           IsSpatializationEnabled: true
           IsAttenuationEnabled: true
         }
       }
     }
     Assets {
-      Id: 6769684776685552986
-      Name: "Meta Fantasy Debuff 01 SFX"
+      Id: 3358730465653412221
+      Name: "Dry Fire Click Generic Clicky 01 SFX"
       PlatformAssetType: 7
       PrimaryAsset {
         AssetType: "AudioAssetRef"
-        AssetId: "sfx_meta_fantasy_debuff_01_Cue_ref"
+        AssetId: "sfx_clicky_dryfire_01_Cue_ref"
       }
     }
     PrimaryAssetId {

@@ -1,5 +1,5 @@
 --[[
-Copyright 2020 Manticore Games, Inc.
+Copyright 2019 Manticore Games, Inc. 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
@@ -20,20 +20,17 @@ Displays text associated with the BannerMessage() event that takes the following
 
 BannerMessage(String message)
 BannerMessage(String message, float duration)
-SubBannerMessage(String message)
-SubBannerMessage(String message, float duration, Color)
 --]]
 
 -- Internal custom properties
 local COMPONENT_ROOT = script:GetCustomProperty("ComponentRoot"):WaitForObject()
-local CANVAS = script:GetCustomProperty("Canvas"):WaitForObject()
 local PANEL = script:GetCustomProperty("Panel"):WaitForObject()
 local TEXT_BOX = script:GetCustomProperty("TextBox"):WaitForObject()
-local HELPER = script:GetCustomProperty("Helper")
+local ELIMINATION_PANEL = script:GetCustomProperty("EliminationPanel"):WaitForObject()
+local ELIMINATION_TEXT = script:GetCustomProperty("EliminationText"):WaitForObject()
 
 -- User exposed properties
 local DEFAULT_DURATION = COMPONENT_ROOT:GetCustomProperty("DefaultDuration")
-local LOCAL_MESSAGE_OFFSET = COMPONENT_ROOT:GetCustomProperty("LocalMessageSpawnOffset")
 
 -- Check user properties
 if DEFAULT_DURATION <= 0.0 then
@@ -41,13 +38,10 @@ if DEFAULT_DURATION <= 0.0 then
     DEFAULT_DURATION = 2.0
 end
 
--- Constant variables
-local LOCAL_PLAYER = Game.GetLocalPlayer()
-
 -- Variables
 local messageEndTime = 0.0
-local localMessageTime = 0
-local localMessageBanners = {}
+local eliminationMessageEndTime = 0.0
+local startingEliminationText = ELIMINATION_TEXT.text
 
 -- nil OnBannerMessageEvent(string, <float>)
 -- Handles a client side banner message event
@@ -62,34 +56,21 @@ function OnBannerMessageEvent(message, duration)
     TEXT_BOX.text = message
 end
 
-function OnSubBannerMessage(message, duration, color)
-    table.insert(localMessageBanners, {
-        message = message,
-        duration = duration,
-        color = color})
-end
-
--- Handles a client side spawning of banner message on local player
-function SpawnLocalMessage(message, duration, color)
-    -- Spawns message instance
-    local messageInstance = World.SpawnAsset(HELPER, {parent = CANVAS})
-    messageInstance.y = LOCAL_MESSAGE_OFFSET
-
-    -- Sets message text
-    local bannerText = messageInstance:GetCustomProperty("BannerText"):WaitForObject()
-    bannerText.text = message
-
-    -- Sets message color
-    if color then
-        bannerText:SetColor(color)
-    end
-
-    -- Sets message duration
-    if duration then
-        messageInstance.lifeSpan = duration
-    else
-        messageInstance.lifeSpan = DEFAULT_DURATION
-    end
+-- nil OnAddKillFeedKill(killerPlayer, killedPlayer, abilityName)
+-- Handles network message event when a player kills another player
+function OnAddKillFeedKill(killerPlayer, killedPlayer, abilityName)
+	if Game:GetLocalPlayer() ~= killerPlayer then
+		return
+	end
+	
+	ELIMINATION_PANEL.visibility = Visibility.INHERIT
+	ELIMINATION_TEXT.text = string.gsub(startingEliminationText, "{name}", killedPlayer.name)
+	
+	if duration then
+		eliminationMessageEndTime = time() + duration
+	else
+		eliminationMessageEndTime = time() + DEFAULT_DURATION
+	end
 end
 
 -- nil Tick(float)
@@ -98,20 +79,13 @@ function Tick(deltaTime)
     if time() > messageEndTime then
         PANEL.visibility = Visibility.FORCE_OFF
     end
-
-    if time() > localMessageTime then
-        for i, value in ipairs(localMessageBanners) do
-            if LOCAL_PLAYER and HELPER then
-                SpawnLocalMessage(value.message, value.duration, value.color)
-                localMessageTime = time() + 1
-                table.remove(localMessageBanners, i)
-                break
-            end
-        end
-    end
+	
+	if time() > eliminationMessageEndTime then
+		ELIMINATION_PANEL.visibility = Visibility.FORCE_OFF
+	end
 end
 
 -- Initialize
 PANEL.visibility = Visibility.FORCE_OFF
 Events.Connect("BannerMessage", OnBannerMessageEvent)
-Events.Connect("SubBannerMessage", OnSubBannerMessage)
+Events.Connect("AddKillFeedKill_Internal", OnAddKillFeedKill)

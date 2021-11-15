@@ -1,208 +1,18 @@
 Name: "Gameplay Settings"
-RootId: 2654916338316290302
+RootId: 13038798448611872974
 Objects {
-  Id: 14713340454944924967
-  Name: "Third Person Camera Settings"
+  Id: 15081026234209237416
+  Name: "Team Autobalancer"
   Transform {
-    Location {
-    }
-    Rotation {
-    }
     Scale {
       X: 1
       Y: 1
       Z: 1
     }
   }
-  ParentId: 2654916338316290302
-  ChildIds: 4226120016796708080
-  ChildIds: 724324913679364851
+  ParentId: 13038798448611872974
   UnregisteredParameters {
   }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 724324913679364851
-  Name: "Client Context"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 14713340454944924967
-  ChildIds: 3567959178173361743
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 3567959178173361743
-  Name: "Third Person Camera"
-  Transform {
-    Location {
-      Z: 500
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 724324913679364851
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Camera {
-    UseAsDefault: true
-    AttachToLocalPlayer: true
-    InitialDistance: 600
-    IsDistanceAdjustable: true
-    MinDistance: 300
-    MaxDistance: 1000
-    PositionOffset {
-      Y: 60
-    }
-    RotationOffset {
-    }
-    FieldOfView: 90
-    ViewWidth: 1200
-    RotationMode {
-      Value: "mc:erotationmode:lookangle"
-    }
-    MinPitch: -89
-    MaxPitch: 89
-    UseAsAudioListener: true
-  }
-}
-Objects {
-  Id: 4226120016796708080
-  Name: "Third Person Player Settings"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 14713340454944924967
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Settings {
-    IsDefault: true
-    PlayerMovementSettings {
-      WalkSpeed: 640
-      MaxAcceleration: 1800
-      WalkableFloorAngle: 44
-      JumpMaxCount: 1
-      JumpVelocity: 900
-      GroundFriction: 8
-      GravityScale: 1.9
-      MaxSwimSpeed: 420
-      Buoyancy: 1
-      TouchForceFactor: 1
-      BrakingDecelerationFlying: 600
-      MaxFlightSpeed: 600
-      MovementControlMode {
-        Value: "mc:emovementcontrolmode:lookrelative"
-      }
-      LookControlMode {
-        Value: "mc:elookcontrolmode:relative"
-      }
-      FacingMode {
-        Value: "mc:efacingmode:faceaimwhenactive"
-      }
-      DefaultRotationRate: 540
-      SlideRotationRate: 20
-      LookAtCursorProjectionPlane {
-        Value: "mc:eprojectionplane:xy"
-      }
-      MountedMaxAcceleration: 1800
-      MountedWalkSpeed: 1280
-      MountedJumpMaxCount: 1
-      MountedJumpVelocity: 900
-      HeadVisibleToSelf: true
-      IsSlideEnabled: true
-      IsCrouchEnabled: true
-      IsJumpEnabled: true
-      CanMoveForward: true
-      CanMoveBackward: true
-      CanMoveLeft: true
-      CanMoveRight: true
-      AbilityAimMode {
-        Value: "mc:eabilityaimmode:viewrelative"
-      }
-      AppearanceChannelingTime: 2
-      MountChannelingTime: 2
-      FlipOnMultiJump: true
-      CanMoveUp: true
-      CanMoveDown: true
-      IsMountEnabled: true
-      MaxHitpoints: 100
-      PlayerMasterVolumeMultiplier: 1
-    }
-  }
-}
-Objects {
-  Id: 6595509540310060651
-  Name: "Combat Dependencies"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2654916338316290302
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -214,11 +24,11 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
-      key: 8014650375856875642
+      key: 8101005287434700507
       value {
         Overrides {
           Name: "Name"
-          String: "Combat Dependencies"
+          String: "Team Autobalancer"
         }
         Overrides {
           Name: "Position"
@@ -233,13 +43,13 @@ Objects {
       }
     }
     TemplateAsset {
-      Id: 7646593255349821538
+      Id: 17998572212483534985
     }
   }
 }
 Objects {
-  Id: 1553158290928957206
-  Name: "Loot Drop Factory"
+  Id: 9560143990130591125
+  Name: "Game State Settings"
   Transform {
     Location {
     }
@@ -251,68 +61,8 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 2654916338316290302
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 15821373674062278737
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Loot Drop Factory"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 8103032393308906111
-    }
-  }
-}
-Objects {
-  Id: 10386512332985716739
-  Name: "Basic Level Progression"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2654916338316290302
-  ChildIds: 17702456270749026213
-  ChildIds: 7479681477510521926
-  ChildIds: 1400357596564663273
+  ParentId: 13038798448611872974
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:LevelResource"
-      String: "Level"
-    }
-    Overrides {
-      Name: "cs:XPResource"
-      String: "XP"
-    }
-    Overrides {
-      Name: "cs:LevelUpgradeFX"
-      AssetReference {
-        Id: 8499283534698809884
-      }
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -324,12 +74,13 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Folder {
-    IsGroup: true
+    IsFilePartition: true
+    FilePartitionName: "Game State Settings"
   }
 }
 Objects {
-  Id: 1400357596564663273
-  Name: "ClientContext"
+  Id: 17631210689446739260
+  Name: "Capture Points"
   Transform {
     Location {
     }
@@ -341,136 +92,8 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 10386512332985716739
-  ChildIds: 13562423811649130649
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 13562423811649130649
-  Name: "BasicLevelProgressionManagerClient"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 1400357596564663273
+  ParentId: 13038798448611872974
   UnregisteredParameters {
-    Overrides {
-      Name: "cs:API"
-      AssetReference {
-        Id: 1940288233858381572
-      }
-    }
-    Overrides {
-      Name: "cs:ComponentRoot"
-      ObjectReference {
-        SelfId: 10386512332985716739
-      }
-    }
-    Overrides {
-      Name: "cs:LevelsList"
-      ObjectReference {
-        SelfId: 7479681477510521926
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Script {
-    ScriptAsset {
-      Id: 11836669575072299260
-    }
-  }
-}
-Objects {
-  Id: 7479681477510521926
-  Name: "Levels List"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 10386512332985716739
-  ChildIds: 10366503602627770182
-  ChildIds: 11970004059651503502
-  ChildIds: 4166602262224679775
-  ChildIds: 7146512184476733302
-  ChildIds: 18323166138438988861
-  ChildIds: 14199397837382062524
-  ChildIds: 489317574469393617
-  ChildIds: 11129527810834493220
-  ChildIds: 961789777433523951
-  ChildIds: 5293415922505154466
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 5293415922505154466
-  Name: "Level 10"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 40534
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 1053
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
   }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -482,547 +105,12 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Folder {
-    IsGroup: true
+    IsFilePartition: true
+    FilePartitionName: "Capture Points"
   }
 }
 Objects {
-  Id: 961789777433523951
-  Name: "Level 9"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 18725
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 796
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 11129527810834493220
-  Name: "Level 8"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 8705
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 605
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 489317574469393617
-  Name: "Level 7"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 4073
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 461
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 14199397837382062524
-  Name: "Level 6"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 1917
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 354
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 18323166138438988861
-  Name: "Level 5"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 908
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 272
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 7146512184476733302
-  Name: "Level 4"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 433
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 211
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 4166602262224679775
-  Name: "Level 3"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 207
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 164
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 11970004059651503502
-  Name: "Level 2"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 100
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 128
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 10366503602627770182
-  Name: "Level 1"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7479681477510521926
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:RequiredXP"
-      Int: 0
-    }
-    Overrides {
-      Name: "cs:MaxHP"
-      Int: 100
-    }
-    Overrides {
-      Name: "cs:RequiredXP:tooltip"
-      String: "Set the required XP for the level. With each subsequent level the required XP should be higher."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-}
-Objects {
-  Id: 17702456270749026213
-  Name: "BasicLevelProgressionManagerServer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 10386512332985716739
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:API"
-      AssetReference {
-        Id: 1940288233858381572
-      }
-    }
-    Overrides {
-      Name: "cs:ComponentRoot"
-      ObjectReference {
-        SelfId: 10386512332985716739
-      }
-    }
-    Overrides {
-      Name: "cs:LevelsList"
-      ObjectReference {
-        SelfId: 7479681477510521926
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Script {
-    ScriptAsset {
-      Id: 16266214722998756308
-    }
-  }
-}
-Objects {
-  Id: 15407832777865811246
-  Name: "EquipmentPersisterStarterServer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2654916338316290302
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:DefaultEquipment"
-      AssetReference {
-        Id: 12924051150070208515
-      }
-    }
-    Overrides {
-      Name: "cs:DefaultEquipment:tooltip"
-      String: "Default equipment equipped to player if player doesn\'t have any equipment saved before."
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Script {
-    ScriptAsset {
-      Id: 1948933349828726524
-    }
-  }
-}
-Objects {
-  Id: 221990104738999854
-  Name: "ResourcePersisterServer"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2654916338316290302
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Script {
-    ScriptAsset {
-      Id: 13451820863796807922
-    }
-  }
-}
-Objects {
-  Id: 3432427007554611280
-  Name: "Respawn Settings"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2654916338316290302
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Settings {
-    RespawnSettings {
-      RespawnDelay: 4
-      RespawnMode_v2 {
-        Value: "mc:erespawnmode:roundrobin"
-      }
-      StartSpawned: true
-    }
-  }
-}
-Objects {
-  Id: 5990543115566140013
+  Id: 9706647234060422002
   Name: "Team Settings"
   Transform {
     Location {
@@ -1035,7 +123,7 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 2654916338316290302
+  ParentId: 13038798448611872974
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -1056,7 +144,43 @@ Objects {
   }
 }
 Objects {
-  Id: 7367735074338159388
+  Id: 533196937850312219
+  Name: "Respawn Settings"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 13038798448611872974
+  UnregisteredParameters {
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Settings {
+    RespawnSettings {
+      RespawnDelay: 5
+      RespawnMode_v2 {
+        Value: "mc:erespawnmode:roundrobin"
+      }
+      StartSpawned: true
+    }
+  }
+}
+Objects {
+  Id: 15652925325991156675
   Name: "Game Settings"
   Transform {
     Location {
@@ -1069,7 +193,9 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 2654916338316290302
+  ParentId: 13038798448611872974
+  UnregisteredParameters {
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -1080,12 +206,10 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Settings {
-    IsDefault: true
     GameSettings {
       RagdollOnDeath: true
-      EnablePlayerStorage: true
       ChatMode {
-        Value: "mc:echatmode:allonly"
+        Value: "mc:echatmode:teamonly"
       }
       ChatSettings {
         ChatMode {
@@ -1126,7 +250,7 @@ Objects {
       }
       VoiceChatSettings {
         VoiceChatMode {
-          Value: "mc:evoicechatmode:all"
+          Value: "mc:evoicechatmode:none"
         }
         VoiceChannelType {
           Value: "mc:evoicechanneltype:normal"
@@ -1157,13 +281,184 @@ Objects {
       PlayerInteractDistance: 500
       PlayerInteractAngleDeg: 50
       PlayerStorageMode {
-        Value: "mc:eplayerstoragemode:writable"
+        Value: "mc:eplayerstoragemode:disabled"
       }
     }
   }
 }
 Objects {
-  Id: 11710640221675572990
+  Id: 8316763151874633161
+  Name: "Third Person Camera Settings"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 13038798448611872974
+  UnregisteredParameters {
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 6230487291917958532
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Third Person Camera Settings"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12645744648190248893
+    }
+  }
+}
+Objects {
+  Id: 838848990806347989
+  Name: "Starting Weapon"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 13038798448611872974
+  ChildIds: 16563045869283725565
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:EquipmentTemplate"
+      AssetReference {
+        Id: 8839957713043493425
+      }
+    }
+    Overrides {
+      Name: "cs:Team"
+      Int: 0
+    }
+    Overrides {
+      Name: "cs:ReplaceOnEachRespawn"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:OnlyEquipDuringRound"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:ResetStanceAfterRound"
+      Bool: true
+    }
+    Overrides {
+      Name: "cs:EquipmentTemplate:tooltip"
+      String: "Equipment template to give to players"
+    }
+    Overrides {
+      Name: "cs:Team:tooltip"
+      String: "If non-zero, only give equipment to players on that team"
+    }
+    Overrides {
+      Name: "cs:ReplaceOnEachRespawn:tooltip"
+      String: "Whether to replace that equipment every time a player spawns"
+    }
+    Overrides {
+      Name: "cs:OnlyEquipDuringRound:tooltip"
+      String: "If checked, players will only be given this equipment when the round starts, and will have the equipment taken away once the round ends."
+    }
+    Overrides {
+      Name: "cs:ResetStanceAfterRound:tooltip"
+      String: "Reset the player\'s stance to unarmed_stance at the end of the round. Only applies if \"OnlyEquipDuringRound\" is checked as well."
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Folder {
+    IsGroup: true
+  }
+  InstanceHistory {
+    SelfId: 14677204227547467535
+    SubobjectId: 16657464430720987128
+    InstanceId: 6701392491503211742
+    TemplateId: 14615028099963445761
+    WasRoot: true
+  }
+}
+Objects {
+  Id: 16563045869283725565
+  Name: "StaticPlayerEquipmentServer"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 838848990806347989
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:ComponentRoot"
+      ObjectReference {
+        SelfId: 838848990806347989
+      }
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Script {
+    ScriptAsset {
+      Id: 3403025055362370891
+    }
+  }
+  InstanceHistory {
+    SelfId: 14094927996911205704
+    SubobjectId: 17230748584674696639
+    InstanceId: 6701392491503211742
+    TemplateId: 14615028099963445761
+  }
+}
+Objects {
+  Id: 1270312993509407700
   Name: "Default Bindings"
   Transform {
     Location {
@@ -1176,7 +471,7 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 2654916338316290302
+  ParentId: 13038798448611872974
   UnregisteredParameters {
   }
   Collidable_v2 {

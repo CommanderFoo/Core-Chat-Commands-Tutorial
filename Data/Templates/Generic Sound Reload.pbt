@@ -1,22 +1,58 @@
 Assets {
-  Id: 8321817849622882250
+  Id: 12107734285812188601
   Name: "Generic Sound Reload"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 902047587094345629
+      RootId: 17846170435686736886
       Objects {
-        Id: 902047587094345629
-        Name: "Generic Sound Reload"
+        Id: 17846170435686736886
+        Name: "Weapon Generic Reload"
         Transform {
+          Location {
+          }
+          Rotation {
+          }
           Scale {
             X: 1
             Y: 1
             Z: 1
           }
         }
-        ParentId: 4781671109827199097
-        ChildIds: 7247429623968480076
+        ParentId: 12436546004889713338
+        ChildIds: 902047587094345629
+        UnregisteredParameters {
+        }
+        WantsNetworking: true
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Folder {
+          IsGroup: true
+        }
+      }
+      Objects {
+        Id: 902047587094345629
+        Name: "Client Context"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 17846170435686736886
+        ChildIds: 4272344084064824150
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -33,8 +69,8 @@ Assets {
         }
       }
       Objects {
-        Id: 7247429623968480076
-        Name: "Magic Cute Warp Powerup 01 SFX"
+        Id: 4272344084064824150
+        Name: "Gun Weapon Reload Set 01 SFX"
         Transform {
           Location {
           }
@@ -47,6 +83,14 @@ Assets {
           }
         }
         ParentId: 902047587094345629
+        UnregisteredParameters {
+          Overrides {
+            Name: "bp:Type"
+            Enum {
+              Value: "mc:esfx_gunreloads:50"
+            }
+          }
+        }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -56,27 +100,29 @@ Assets {
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
-        AudioInstance {
-          AudioAsset {
-            Id: 7267904374805701543
+        Blueprint {
+          BlueprintAsset {
+            Id: 11279392096978883335
           }
-          AutoPlay: true
-          Volume: 1
-          Falloff: -1
-          Radius: -1
-          EnableOcclusion: true
-          IsSpatializationEnabled: true
-          IsAttenuationEnabled: true
+          AudioBP {
+            AutoPlay: true
+            Volume: 1
+            Falloff: 3600
+            Radius: 400
+            EnableOcclusion: true
+            IsSpatializationEnabled: true
+            IsAttenuationEnabled: true
+          }
         }
       }
     }
     Assets {
-      Id: 7267904374805701543
-      Name: "Magic Cute Warp Powerup 01 SFX"
-      PlatformAssetType: 7
+      Id: 11279392096978883335
+      Name: "Gun Weapon Reload Set 01 SFX"
+      PlatformAssetType: 10
       PrimaryAsset {
-        AssetType: "AudioAssetRef"
-        AssetId: "sfx_cute_magic_warp_powerup_01a_Cue_ref"
+        AssetType: "AudioBlueprintAssetRef"
+        AssetId: "sfxabp_reloads_ref"
       }
     }
     PrimaryAssetId {

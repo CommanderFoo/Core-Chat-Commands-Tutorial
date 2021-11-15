@@ -29,13 +29,12 @@ Assets {
         }
         Control {
           Width: 500
-          Height: 30
+          Height: 44
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
             }
           }
-          UseParentWidth: true
           Text {
             Label: "Killfeed Line"
             Color {
@@ -44,7 +43,7 @@ Assets {
               B: 1
               A: 1
             }
-            Size: 15
+            Size: 20
             Justification {
               Value: "mc:etextjustify:right"
             }

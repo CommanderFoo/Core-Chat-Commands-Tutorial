@@ -1,5 +1,5 @@
 Assets {
-  Id: 5987772215700147652
+  Id: 6039822344767593962
   Name: "Message Banner"
   PlatformAssetType: 5
   TemplateAsset {
@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 5628166357863187692
+        ParentId: 4113106027073691432
         ChildIds: 11273653940987149079
         UnregisteredParameters {
           Overrides {
@@ -23,16 +23,8 @@ Assets {
             Float: 3
           }
           Overrides {
-            Name: "cs:LocalMessageSpawnOffset"
-            Float: 200
-          }
-          Overrides {
             Name: "cs:DefaultDuration:tooltip"
             String: "Default duration of a message if none is specified"
-          }
-          Overrides {
-            Name: "cs:LocalMessageSpawnOffset:tooltip"
-            String: "World local player offset to display local message on the player"
           }
         }
         Collidable_v2 {
@@ -102,12 +94,6 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Canvas"
-            ObjectReference {
-              SubObjectId: 13042368893488459696
-            }
-          }
-          Overrides {
             Name: "cs:Panel"
             ObjectReference {
               SubObjectId: 13469228761640500648
@@ -120,9 +106,15 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Helper"
-            AssetReference {
-              Id: 3237383946689991651
+            Name: "cs:EliminationText"
+            ObjectReference {
+              SubObjectId: 17444645232226804107
+            }
+          }
+          Overrides {
+            Name: "cs:EliminationPanel"
+            ObjectReference {
+              SubObjectId: 14442662322453796134
             }
           }
         }
@@ -157,6 +149,7 @@ Assets {
         }
         ParentId: 11273653940987149079
         ChildIds: 13469228761640500648
+        ChildIds: 14442662322453796134
         UnregisteredParameters {
         }
         Collidable_v2 {
@@ -214,60 +207,7 @@ Assets {
           }
         }
         ParentId: 13042368893488459696
-        ChildIds: 17231795282907160772
         ChildIds: 2215929790428371099
-        UnregisteredParameters {
-        }
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:forceoff"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Control {
-          Width: 650
-          Height: 80
-          UIY: 150
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          Panel {
-            Opacity: 1
-          }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:topcenter"
-              }
-            }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:topcenter"
-              }
-            }
-          }
-        }
-      }
-      Objects {
-        Id: 17231795282907160772
-        Name: "Background"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 13469228761640500648
         UnregisteredParameters {
         }
         Collidable_v2 {
@@ -280,34 +220,26 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Control {
-          Width: 200
-          Height: 200
+          Width: 600
+          Height: 100
+          UIY: -310
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
             }
           }
-          UseParentWidth: true
-          UseParentHeight: true
-          Image {
-            Brush {
-              Id: 16241833908851998054
-            }
-            Color {
-              A: 0.7
-            }
-            TeamSettings {
-            }
+          Panel {
+            Opacity: 1
           }
           AnchorLayout {
             SelfAnchor {
               Anchor {
-                Value: "mc:euianchor:topleft"
+                Value: "mc:euianchor:middlecenter"
               }
             }
             TargetAnchor {
               Anchor {
-                Value: "mc:euianchor:topleft"
+                Value: "mc:euianchor:middlecenter"
               }
             }
           }
@@ -340,15 +272,13 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Control {
-          Width: 1000
+          Width: 600
           Height: 100
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
             }
           }
-          UseParentWidth: true
-          UseParentHeight: true
           Text {
             Label: "Message Banner"
             Color {
@@ -357,7 +287,7 @@ Assets {
               B: 1
               A: 1
             }
-            Size: 35
+            Size: 50
             Justification {
               Value: "mc:etextjustify:center"
             }
@@ -379,14 +309,122 @@ Assets {
           }
         }
       }
-    }
-    Assets {
-      Id: 16241833908851998054
-      Name: "BG Flat 001"
-      PlatformAssetType: 9
-      PrimaryAsset {
-        AssetType: "PlatformBrushAssetRef"
-        AssetId: "BackgroundNoOutline_020"
+      Objects {
+        Id: 14442662322453796134
+        Name: "Elimination Panel"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 13042368893488459696
+        ChildIds: 17444645232226804107
+        UnregisteredParameters {
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Control {
+          Width: 400
+          Height: 50
+          UIY: -230
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          Panel {
+            Opacity: 1
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+      }
+      Objects {
+        Id: 17444645232226804107
+        Name: "EliminationText"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 14442662322453796134
+        UnregisteredParameters {
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Control {
+          Width: 400
+          Height: 50
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          Text {
+            Label: "You eliminated {name}!"
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            Size: 24
+            Justification {
+              Value: "mc:etextjustify:center"
+            }
+            AutoWrapText: true
+            Font {
+            }
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
       }
     }
     PrimaryAssetId {
