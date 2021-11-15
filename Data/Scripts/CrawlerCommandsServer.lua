@@ -100,29 +100,6 @@ CommandParser.AddCommand("heal", function(sender, params, status)
 	end
 end)
 
-CommandParser.AddCommand("killnpcs", function(sender, params, status)
-	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
-		local objs = World.GetRootObject():GetChildren()
-		local count = 0
-
-		for i, c in ipairs(objs) do
-			if c.name:find("NPC") then
-				local attackServer = c:FindChildByName("NPCAttackServer")
-
-				if attackServer ~= nil then
-					attackServer.context.ApplyDamage(Damage.New(50000), sender)
-					count = count + 1
-				end
-			end
-		end
-
-		status.success = true
-		status.senderMessage = "NPC's killed " .. tostring(count) .. "."
-	else
-		status.senderMessage = CommandParser.error.NO_PERMISSION
-	end
-end)
-
 local regen_players = {}
 local regen_task = nil
 
@@ -196,3 +173,26 @@ CommandParser.AddCommand("regen", {
 	end
 
 })
+
+CommandParser.AddCommand("killnpcs", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local objs = World.GetRootObject():GetChildren()
+		local count = 0
+
+		for i, c in ipairs(objs) do
+			if c.name:find("NPC") then
+				local attackServer = c:FindChildByName("NPCAttackServer")
+
+				if attackServer ~= nil then
+					attackServer.context.ApplyDamage(Damage.New(50000), sender)
+					count = count + 1
+				end
+			end
+		end
+
+		status.success = true
+		status.senderMessage = "NPC's killed " .. tostring(count) .. "."
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
