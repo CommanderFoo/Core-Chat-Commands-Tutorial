@@ -316,6 +316,10 @@ Objects {
           Name: "cs:RequiredPlayers"
           Int: 1
         }
+        Overrides {
+          Name: "cs:CountdownTime"
+          Float: 3
+        }
       }
     }
     TemplateAsset {
@@ -429,6 +433,10 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
+        }
+        Overrides {
+          Name: "cs:LobbyDuration"
+          Float: 10
         }
       }
     }
