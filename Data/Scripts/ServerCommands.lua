@@ -375,3 +375,100 @@ CommandParser.AddCommand("help", function(sender, params, status)
 		status.senderMessage = CommandParser.error.NO_PERMISSION
 	end
 end)
+
+-- /push player direction amount
+CommandParser.AddCommand("push", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[2]))
+
+		if who ~= nil then
+			local direction = CommandParser.ParamIsValid(params[3])
+			local currentVel = who:GetVelocity()
+			local dirVector = who:GetWorldTransform():GetUpVector()
+			local amount = tonumber(params[3]) or 2000
+
+			if direction == "left" then
+				dirVector = -who:GetWorldTransform():GetRightVector()
+			elseif direction == "right" then
+				dirVector = who:GetWorldTransform():GetRightVector()
+			elseif direction == "forward" then
+				dirVector = who:GetWorldTransform():GetForwardVector()
+			elseif direction == "back" then
+				dirVector = -who:GetWorldTransform():GetForwardVector()
+			end
+
+			who:SetVelocity(currentVel + dirVector * amount)
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
+-- /ragdoll on player
+CommandParser.AddCommand("ragdoll", {
+	
+	on = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+			local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[3]))
+
+			if who ~= nil then
+				who:EnableRagdoll("lower_spine", .5)
+				who:EnableRagdoll("right_shoulder", .5)
+				who:EnableRagdoll("left_shoulder", .5)
+			else
+				status.senderMessage = CommandParser.error.INVALID_PLAYER
+			end
+		else
+			status.senderMessage = CommandParser.error.NO_PERMISSION
+		end
+	end,
+
+	off = function(sender, params, status)
+		if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+			local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[3]))
+
+			if who ~= nil then
+				who:DisableRagdoll("lower_spine")
+				who:DisableRagdoll("right_shoulder")
+				who:DisableRagdoll("left_shoulder")
+			else
+				status.senderMessage = CommandParser.error.INVALID_PLAYER
+			end
+		else
+			status.senderMessage = CommandParser.error.NO_PERMISSION
+		end
+	end
+
+})
+
+-- /jumpcount player amount
+CommandParser.AddCommand("jumpcount", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[2]))
+
+		if who ~= nil then
+			who.maxJumpCount = tonumber(params[3]) or 1
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
+
+-- /jumpheight player height
+CommandParser.AddCommand("jumpheight", function(sender, params, status)
+	if CommandParser.HasPermission(sender, CommandParser.permissions.ADMIN) then
+		local who = CommandParser.GetPlayer(CommandParser.ParamIsValid(params[2]))
+
+		if who ~= nil then
+			who.jumpVelocity = tonumber(params[3]) or 900
+		else
+			status.senderMessage = CommandParser.error.INVALID_PLAYER
+		end
+	else
+		status.senderMessage = CommandParser.error.NO_PERMISSION
+	end
+end)
