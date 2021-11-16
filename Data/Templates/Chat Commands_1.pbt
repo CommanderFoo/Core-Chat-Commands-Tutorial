@@ -1,12 +1,12 @@
 Assets {
-  Id: 14237971253290887057
-  Name: "Chat Commands Tutorial"
+  Id: 14613085096713030227
+  Name: "Chat Commands"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 16770956965621346328
+      RootId: 15122829479449637317
       Objects {
-        Id: 16770956965621346328
+        Id: 15122829479449637317
         Name: "TemplateBundleDummy"
         Transform {
           Location {
@@ -22,14 +22,23 @@ Assets {
         Folder {
           BundleDummy {
             ReferencedAssets {
-              Id: 2115394716976713347
+              Id: 1788586702711104432
             }
             ReferencedAssets {
-              Id: 1788586702711104432
+              Id: 2115394716976713347
             }
           }
         }
       }
+    }
+    Assets {
+      Id: 2115394716976713347
+      Name: "CommandPermissions"
+      PlatformAssetType: 3
+      TextAsset {
+        Text: "local Permissions = {\r\n\r\n\t-- Local preview / mp add Bot1\r\n\t\r\n\tCREATOR = {\r\n\r\n\t\tnames = { \"CommanderFoo\" },\r\n\t\tname = \"Creator\"\r\n\r\n\t},\r\n\r\n\tADMIN = {\r\n\r\n\t\tpriority = 50,\r\n\t\tname = \"Admin\"\r\n\r\n\t},\r\n\r\n\tMODERATOR = {\r\n\r\n\t\tpriority = 30,\r\n\t\tname = \"Moderator\"\r\n\r\n\t}\r\n\r\n}\r\n\r\n-- Add Bot1 if the game is local for testing local\r\n-- multiplayer preview.\r\nif Environment.IsLocalGame() then\r\n\ttable.insert(Permissions.CREATOR.names, \"Bot1\")\r\nend\r\n\r\nreturn Permissions"
+      }
+      DirectlyPublished: true
     }
     Assets {
       Id: 1788586702711104432
@@ -48,24 +57,15 @@ Assets {
       }
       DirectlyPublished: true
     }
-    Assets {
-      Id: 2115394716976713347
-      Name: "CommandPermissions"
-      PlatformAssetType: 3
-      TextAsset {
-        Text: "local Permissions = {\r\n\r\n\t-- Local preview / mp add Bot1\r\n\t\r\n\tCREATOR = {\r\n\r\n\t\tnames = { \"CommanderFoo\" },\r\n\t\tname = \"Creator\"\r\n\r\n\t},\r\n\r\n\tADMIN = {\r\n\r\n\t\tpriority = 50,\r\n\t\tname = \"Admin\"\r\n\r\n\t},\r\n\r\n\tMODERATOR = {\r\n\r\n\t\tpriority = 30,\r\n\t\tname = \"Moderator\"\r\n\r\n\t}\r\n\r\n}\r\n\r\n-- Add Bot1 if the game is local for testing local\r\n-- multiplayer preview.\r\nif Environment.IsLocalGame() then\r\n\ttable.insert(Permissions.CREATOR.names, \"Bot1\")\r\nend\r\n\r\nreturn Permissions"
-      }
-      DirectlyPublished: true
-    }
     PrimaryAssetId {
       AssetType: "None"
       AssetId: "None"
     }
   }
   Marketplace {
-    Id: "25f4ec5a82dd4b299a0119b5e40cecdf"
-    OwnerAccountId: "93d6eaf2514940a08c5481a4c03c1ee3"
-    OwnerName: "CommanderFoo"
+    Id: "5cdbd8c77a674d6d827e61ff577c81e2"
+    OwnerAccountId: "bd602d5201b04b3fbf7be10f59c8f974"
+    OwnerName: "CoreAcademy"
   }
   SerializationVersion: 101
 }
